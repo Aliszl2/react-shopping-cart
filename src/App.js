@@ -25,9 +25,8 @@ function App() {
 
         {/* Routes */}
         <Route
-          exact
-          path="/"
-          render={() => <Products products={products} addItem={addItem} />}
+          exact path="/"
+         component={Products}
         />
 
         <Route path="/cart" render={() => <ShoppingCart cart={cart} />} />
