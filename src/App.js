@@ -17,19 +17,18 @@ function App() {
     // add the given item to the cart
     setCart([...cart, item]);
   };
+  
 
   return (
     <ProductContext.Provider value={{ products, addItem }}>
       <div className="App">
-        <Navigation cart={cart} />
+        <CartContext.Provider value={cart}>
+          <Navigation />
 
-        {/* Routes */}
-        <Route
-          exact path="/"
-         component={Products}
-        />
-
-        <Route path="/cart" render={() => <ShoppingCart cart={cart} />} />
+          {/* Routes */}
+          <Route path="/cart" component={ShoppingCart} />
+        </CartContext.Provider>
+        <Route exact path="/" component={Products} />
       </div>
     </ProductContext.Provider>
   );
